@@ -2,32 +2,28 @@ import React from 'react';
 import { Card , CardText ,CardTitle ,CardBody ,CardImg , CardImgOverlay } from 'reactstrap';
 
 
-
     function RenderComments({comments}) {
-        if(comments == null) {
-            return(
-                <div>
+       if(comments!=null)
+       {
+           return(
+               <div className="col-12 col-md-5 m-1">
+                   <h4>Comments</h4>
+                    <ul className="list-unstyled">
 
-                </div>
-            )
-        }
-        else
-        {
-            const comment = comments.map(comment =>{
-                return(
-                    <li key={comment.id}>
-                        <p>{comment.comment}</p>
-                        <p>-- {comment.author} </p>
-                    </li>
-                )
-            })
-            return(
-                <div className="col-12 col-md-5 m-1">
-                    <h4> Comments </h4>
-                    <ul className="list-unstyled">{comment}</ul>
-                </div>
-            )
-        }
+                                <li key={comments.id}>
+                                    <p>{comments.comment}</p>
+                                    <p>--{comments.author}</p>
+                                </li>
+                    </ul>
+               </div>
+           )
+       }
+       else
+       {
+           return(
+               <div></div>
+           )
+       }
     }
 
     function RenderHome({home}){
@@ -36,13 +32,13 @@ import { Card , CardText ,CardTitle ,CardBody ,CardImg , CardImgOverlay } from '
             return(
             <div className="col-12 col-md-5 m-1">
             <Card>
-                <CardImg width="100%" src={home.image} alt={home.name} />
-                <CardBody>
-                    <CardTitle>{home.name}</CardTitle>
-                    <CardText>{home.house_location}</CardText>
-                    <CardText>Price : - {home.Price}</CardText>
-                    <CardText>Area in sqft : - {home.Area}</CardText>
-                </CardBody>
+                <CardImg width="100%" height="400px" src={home.image} alt={home.house_title} />
+                <CardImgOverlay>
+                    <CardTitle>{home.house_title}</CardTitle>
+                    <p>{home.house_location}</p>
+                    <p>Price : - {home.Price}</p>
+                    <p>Area in sqft : - {home.Area}</p>
+                </CardImgOverlay>
             </Card>
             </div>
             )
@@ -50,7 +46,7 @@ import { Card , CardText ,CardTitle ,CardBody ,CardImg , CardImgOverlay } from '
         else
         {
             return(
-                <div></div>
+                <div>Not Found</div>
             );
         }
     }
@@ -66,10 +62,10 @@ import { Card , CardText ,CardTitle ,CardBody ,CardImg , CardImgOverlay } from '
         }
         return(
             <div className="container">
-            <div className="row">
-                <RenderHome home= {props.home} />
-                <RenderComments comments = {props.home.comments} />
-            </div>
+                <div className="row">
+                    <RenderHome home={props.home} />
+                    <RenderComments comments={props.comments} />
+                </div>
             </div>
         )
     }
