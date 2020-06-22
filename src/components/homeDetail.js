@@ -1,13 +1,9 @@
-import React , { Component } from 'react';
+import React from 'react';
 import { Card , CardText ,CardTitle ,CardBody ,CardImg , CardImgOverlay } from 'reactstrap';
 
-class homedetail extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
-    renderComments(comments) {
+    function RenderComments({comments}) {
         if(comments == null) {
             return(
                 <div>
@@ -34,7 +30,7 @@ class homedetail extends Component {
         }
     }
 
-    renderHome(home){
+    function RenderHome({home}){
         if(home!= null)
         {
             return(
@@ -59,8 +55,8 @@ class homedetail extends Component {
         }
     }
 
-    render() {
-        const home = this.props.home
+    const homedetail = (props) => {
+        const home = props.home
         if(home == null) {
             return(
                 <div>
@@ -68,15 +64,14 @@ class homedetail extends Component {
                 </div>
             )
         }
-        const homeItem  = this.renderHome(home)
-        const commentItem = this.renderComments(home.comments)
         return(
+            <div className="container">
             <div className="row">
-                { homeItem }
-                { commentItem }
+                <RenderHome home= {props.home} />
+                <RenderComments comments = {props.home.comments} />
+            </div>
             </div>
         )
     }
-}
 
 export default homedetail;

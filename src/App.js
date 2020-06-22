@@ -1,31 +1,18 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
-import Menu from './components/MenuComponents';
-import { PROPERTIES } from './shared/Properties';
+import Main from './components/MainComponents';
+import { BrowserRouter } from 'react-router-dom';
+
 
 class App extends Component {
 
-  constructor(props){
-    super(props);
-
-    this.state = {
-      homes:PROPERTIES
-    };
-  }
-
   render() {
   return (
+    <BrowserRouter>
     <div className="App">
-      <div className="App">
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Real E State</NavbarBrand>
-          </div>
-        </Navbar>
-        <Menu homes={this.state.homes}/>
-      </div>
+        <Main />
     </div>
+    </BrowserRouter>
   );
   }
 }

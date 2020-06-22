@@ -1,32 +1,49 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './components/MenuComponents';
-import { PROPERTIES } from './shared/Properties';
+import Menu from './MenuComponents';
+import { PROPERTIES } from '../shared/Properties';
+import Homedetail from './homeDetail';
+import Header from './Header';
+import Footer from './FooterComponents';
+import Home from './HomeComponents';
+import { Switch , Route , Redirect } from 'react-router-dom';
 
-class App extends Component {
+
+class Main extends Component {
 
   constructor(props){
     super(props);
 
     this.state = {
-      homes:PROPERTIES
+      homes:PROPERTIES,
+      selectedhome:null
     };
   }
 
+
+
   render() {
+
+    const HomePage = () =>{
+      return(
+        <Home />
+      )
+    }
+
+
   return (
     <div className="App">
       <div className="App">
-        <Navbar dark color="primary">
-          <div className="container">
-            <NavbarBrand href="/">Real E State</NavbarBrand>
-          </div>
-        </Navbar>
-        <Menu homes={this.state.homes}/>
+        <Header />
+        <Switch>
+          <Route path="/home" component={HomePage} />
+          <Route path="/properties" component={()=><Menu homes={this.state.homes} />} />
+          <Redirect to="/home" />
+        </Switch>
       </div>
+      <Footer />
     </div>
   );
   }
 }
 
-export default App;
+export default Main;
