@@ -40,7 +40,7 @@ class Main extends Component {
     const HomeWithId = ({match}) => {
       return(
         <Homedetail home={this.props.homes.filter((home)=>home.id===parseInt(match.params.homeId,10))[0]} 
-            comments={this.props.comments.filter((comment) => comment.homeId === parseInt(match.params.homeId,10))[0]}
+            comments={this.props.comments.filter((comment) => comment.homeId === parseInt(match.params.homeId,10))}
           addComment={this.props.addComment} />
       )
     }

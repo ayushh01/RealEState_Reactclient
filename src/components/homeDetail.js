@@ -81,25 +81,30 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
         }
     }
 
-    function RenderComments({comments , addComment , homeId}) {
+    function RenderComments({comments , addComment,homeId}) {
         if(comments == null) {
             return(
                 <div>
-                    <CommentForm  homeId={homeId} addComment={addComment}/>
+
                 </div>
             )
         }
         else
         {
-
+            const comment = comments.map(comment =>{
+                return(
+                    <li key={comment.id}>
+                        <p>{comment.comment}</p>
+                        <p>-- {comment.author}</p>
+                    </li>
+                    
+                )
+            })
             return(
                 <div className="col-12 col-md-5 m-1">
                     <h4> Comments </h4>
-                    <ul className="list-unstyled"><li key={comments.id}>
-                        <p>{comments.comment}</p>
-                        <p>-- {comments.author} </p>
-                    </li></ul>
-                    <CommentForm  homeId={homeId} addComment={addComment}/>  
+                    <ul className="list-unstyled">{comment}</ul>
+                    <CommentForm homeId={homeId} addComment={addComment}/>  
                         
                 </div>
             )
