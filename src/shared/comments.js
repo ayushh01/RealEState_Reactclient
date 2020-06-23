@@ -1,18 +1,18 @@
 export const COMMENTS = 
 [
     {
-        id: 0,
-        homeId: 0,
+        id:0,
+        homeId:0,
         rating: 5,
         comment: "testing comment",
-        author: "ayush11s"
+        author: "ayush"
     },
     {
-        id: 6,
-        homeId: 0,
+        id:11,
+        homeId:0,
         rating: 5,
-        comment: "testing 1",
-        author: "ayush1"
+        comment: "testing comment",
+        author: "ayush"
     },
     {
         id:1,
@@ -35,4 +35,4 @@ export const COMMENTS =
         comment: "testing comment",
         author: "ayush"
     }
-]
+];
