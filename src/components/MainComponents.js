@@ -8,7 +8,7 @@ import Home from './HomeComponents';
 import Contact from './contactComponent';
 import { Switch , Route , Redirect , withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment } from '../redux/ActionCreators';
+import { addComment ,  fetchHomes } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -18,7 +18,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addComment:(homeId , rating ,author, comment) => dispatch(addComment(homeId , rating ,author, comment))
+  addComment:(homeId , rating ,author, comment) => dispatch(addComment(homeId , rating ,author, comment)),
+  fetchHomes:() => {dispatch(fetchHomes())}
 });
 
 class Main extends Component {
@@ -27,19 +28,23 @@ class Main extends Component {
     super(props);
   }
 
-  
+  componentDidMount() {
+    this.props.fetchHomes();
+  }
 
   render() {
 
     const HomePage = () =>{
       return(
-        <Home home={this.props.homes.filter((home)=>home.featured)[0]}/>
+        <Home home={this.props.homes.homes.filter((home)=>home.featured)[0]}
+        homesLoading={this.props.homes.isLoading} homesErrMess = { this.props.homes.errMess}/>
       )
     }
 
     const HomeWithId = ({match}) => {
       return(
-        <Homedetail home={this.props.homes.filter((home)=>home.id===parseInt(match.params.homeId,10))[0]} 
+        <Homedetail home={this.props.homes.homes.filter((home)=>home.id===parseInt(match.params.homeId,10))[0]}
+            isLoading={this.props.homes.isLoading} errMess = { this.props.homes.errMess}
             comments={this.props.comments.filter((comment) => comment.homeId === parseInt(match.params.homeId,10))}
           addComment={this.props.addComment} />
       )

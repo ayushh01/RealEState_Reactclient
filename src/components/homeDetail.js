@@ -2,7 +2,7 @@ import React , { Component} from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody,CardTitle, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 import { addComment } from '../redux/ActionCreators';
 import { Control, LocalForm, Errors } from 'react-redux-form';  
-
+import { Loading } from './LoadingComponent';
 
     const required = (val) => val && val.length;
     const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -138,7 +138,26 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 
     const homedetail = (props) => {
         const home = props.home
-        if(home == null) {
+        if(props.isLoading) {
+            return(
+                <div className="conatiner">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>
+            )
+        }
+        else if(props.errMess) {
+            return(
+                <div className="conatiner">
+                    <div className="row">
+                        <h4>{props.errMess}</h4>
+                    </div>
+                </div>
+            )
+        }
+        else if(home == null) 
+        {
             return(
                 <div>
 

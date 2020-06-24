@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card ,CardImg , CardImgOverlay , CardText , CardBody , CardTitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import { Loading } from './LoadingComponent';
 
     function RenderHomeItem({home ,onClick}) {
         return(
@@ -20,21 +20,40 @@ import { Link } from 'react-router-dom';
     }
 
     const Menu = (props) => {
-        const menu = props.homes.map((home)=>{
+        const menu = props.homes.homes.map((home)=>{
             return(
                 <div key={home.id} className="col-12 col-md-5 m-1">
                     <RenderHomeItem home={home}/>        
                 </div>
             )
         })
-
-        return(
-            <div className="container">
-                <div className="row">
-                    {menu}
+        if(props.homes.isLoading) {
+            return(
+                <div className="conatiner">
+                    <div className="row">
+                        <Loading />
+                    </div>
                 </div>
-            </div>
-        );
+            )
+        }
+        else if(props.homes.errMess) {
+            return(
+                <div className="conatiner">
+                    <div className="row">
+                        <h4>{props.homes.errMess}</h4>
+                    </div>
+                </div>
+            )
+        }
+        else {
+            return(
+                <div className="container">
+                    <div className="row">
+                        {menu}
+                    </div>
+                </div>
+            );
+        }
     }
 
         
