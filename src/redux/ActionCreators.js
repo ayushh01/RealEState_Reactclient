@@ -16,8 +16,24 @@ export const fetchHomes = () => (dispatch) => {
     dispatch(homesLoading(true));
 
     return fetch(baseUrl + 'home')
+        .then(response => {
+            if(response.ok) {
+                return response;
+            }
+            else
+            {
+                var error = new Error('Error ' + response.status  + ': ' + response.statusText)
+                error.response = response;
+                throw error;
+            }
+        },
+        error => {
+            var errmess =  new Error(error.message);
+            throw errmess;
+        })
         .then(response => response.json())
-        .then(homes => dispatch(addHomes(homes)));
+        .then(homes => dispatch(addHomes(homes)))
+        .catch(error => dispatch(homesfailed(error.message)))
 }
 
 export const homesLoading = () =>({
@@ -36,8 +52,24 @@ export const addHomes = (homes) => ({
 
 export const fetchComments = () => (dispatch) => {
     return fetch(baseUrl + 'comments')
-        .then(response => response.json())
-        .then(comments => dispatch(addComments(comments)));
+    .then(response => {
+        if(response.ok) {
+            return response;
+        }
+        else
+        {
+            var error = new Error('Error ' + response.status  + ': ' + response.statusText)
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess =  new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(comments => dispatch(addComments(comments)))
+    .catch(error => dispatch(commentsfailed(error.message)))
 }
 
 export const commentsfailed = (errmess) => ({

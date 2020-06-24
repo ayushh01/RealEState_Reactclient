@@ -139,7 +139,6 @@ import { baseUrl } from '../shared/BaseUrl';
 
     const homedetail = (props) => {
         const home = props.home
-        console.log(props);
         if(props.isLoading) {
             return(
                 <div className="conatiner">
