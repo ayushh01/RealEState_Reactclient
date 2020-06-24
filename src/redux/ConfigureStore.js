@@ -10,7 +10,7 @@ export const ConfigureStore = ()  => {
             homes:Homes,
             comments:Comments
         }),
-        applyMiddleware(thunk , logger)
+        applyMiddleware( thunk , logger)
     );
 
     return store;

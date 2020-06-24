@@ -1,8 +1,9 @@
 import React , { Component} from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody,CardTitle, Button, Modal, ModalHeader, ModalBody, Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardTitle, Button, Modal, ModalHeader, ModalBody,  Label, Row, Col } from 'reactstrap';
 import { addComment } from '../redux/ActionCreators';
 import { Control, LocalForm, Errors } from 'react-redux-form';  
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/BaseUrl';
 
     const required = (val) => val && val.length;
     const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -85,7 +86,7 @@ import { Loading } from './LoadingComponent';
         if(comments == null) {
             return(
                 <div>
-
+                    <h4>Not Found</h4>
                 </div>
             )
         }
@@ -117,7 +118,7 @@ import { Loading } from './LoadingComponent';
             return(
             <div className="col-12 col-md-5 m-1">
             <Card>
-                <CardImg width="100%" height="400px" src={home.image} alt={home.house_title} />
+                <CardImg width="100%" height="400px" src={baseUrl + home.image} alt={home.house_title} />
                 <CardImgOverlay>
                     <CardTitle>{home.house_title}</CardTitle>
                     <p>{home.house_location}</p>
@@ -138,6 +139,7 @@ import { Loading } from './LoadingComponent';
 
     const homedetail = (props) => {
         const home = props.home
+        console.log(props);
         if(props.isLoading) {
             return(
                 <div className="conatiner">
@@ -160,7 +162,7 @@ import { Loading } from './LoadingComponent';
         {
             return(
                 <div>
-
+                    <h4>Home not found</h4>
                 </div>
             )
         }

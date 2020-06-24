@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import { PROPERTIES } from '../shared/Properties';
+import { baseUrl } from '../shared/BaseUrl';
 
 export const addComment = (homeId , rating , author , comment) => ({
     type:ActionTypes.ADD_COMMENT,
@@ -14,9 +15,9 @@ export const addComment = (homeId , rating , author , comment) => ({
 export const fetchHomes = () => (dispatch) => {
     dispatch(homesLoading(true));
 
-    setTimeout(()=>{
-        dispatch(addHomes(PROPERTIES));
-    } ,2000)
+    return fetch(baseUrl + 'home')
+        .then(response => response.json())
+        .then(homes => dispatch(addHomes(homes)));
 }
 
 export const homesLoading = () =>({
@@ -31,4 +32,20 @@ export const homesfailed = (errmess) => ({
 export const addHomes = (homes) => ({
     type:ActionTypes.ADD_HOMES,
     payload:homes
+});
+
+export const fetchComments = () => (dispatch) => {
+    return fetch(baseUrl + 'comments')
+        .then(response => response.json())
+        .then(comments => dispatch(addComments(comments)));
+}
+
+export const commentsfailed = (errmess) => ({
+    type: ActionTypes.COMMENTS_FAILED,
+    payload:errmess
+});
+
+export const addComments = (comments) => ({
+    type:ActionTypes.ADD_COMMENTS,
+    payload:comments
 });

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardImg,CardText,CardBody,CardTitle,CardSubtitle } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/BaseUrl';
 function RenderCard({item ,isLoading , errMess}) {
     if(isLoading) {
         return(
@@ -16,9 +17,9 @@ function RenderCard({item ,isLoading , errMess}) {
     else 
     {
         return(
-            <Link to={`/properties/${item.id}`} >
+            <Link to={`/properties/${item._id}`} >
             <Card>
-                <CardImg src={item.image} alt={item.house_title} />
+                <CardImg src={baseUrl + item.image} alt={item.house_title} />
                 <CardBody>
                     <CardTitle>{item.house_title}</CardTitle>
                     <CardSubtitle>{item.price}</CardSubtitle>
