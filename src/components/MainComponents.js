@@ -8,19 +8,22 @@ import Home from './HomeComponents';
 import Contact from './contactComponent';
 import { Switch , Route , Redirect , withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addComment ,  fetchHomes , fetchComments } from '../redux/ActionCreators';
+import { postComment ,  fetchHomes , fetchComments , loginUser , logoutUser } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
     homes:state.homes,
-    comments:state.comments
+    comments:state.comments,
+    auth:state.auth
   }   
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addComment:(homeId , rating ,author, comment) => dispatch(addComment(homeId , rating ,author, comment)),
+  postComment:(homeId , rating ,author, comment) => dispatch(postComment(homeId , rating ,author, comment)),
   fetchHomes:() => {dispatch(fetchHomes())},
-  fetchComments:() => {dispatch(fetchComments())}
+  fetchComments:() => {dispatch(fetchComments())},
+  loginUser: (creds) => dispatch(loginUser(creds)),
+  logoutUser: () => dispatch(logoutUser()),
 });
 
 class Main extends Component {
@@ -50,7 +53,7 @@ class Main extends Component {
             isLoading={this.props.homes.isLoading} errMess = { this.props.homes.errMess}
             comments={this.props.comments.comments.filter((comment) => comment.home === match.params.homeId)}
             commentsErrMess = { this.props.comments.errMess}
-            addComment={this.props.addComment} />
+            postComment={this.props.postComment} />
       )
     }
 
@@ -58,7 +61,10 @@ class Main extends Component {
   return (
     <div className="App">
       <div className="App">
-        <Header />
+      <Header auth={this.props.auth} 
+          loginUser={this.props.loginUser} 
+          logoutUser={this.props.logoutUser} 
+          />   
         <Switch>
           <Route path="/home" component={HomePage} />
           <Route exact path="/properties" component={()=><Menu homes={this.props.homes} />} />

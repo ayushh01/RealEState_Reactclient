@@ -1,6 +1,6 @@
 import React , { Component} from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle, Button, Modal, ModalHeader, ModalBody,  Label, Row, Col } from 'reactstrap';
-import { addComment } from '../redux/ActionCreators';
+import { postComment } from '../redux/ActionCreators';
 import { Control, LocalForm, Errors } from 'react-redux-form';  
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseUrl';
@@ -31,7 +31,7 @@ import { baseUrl } from '../shared/BaseUrl';
 
         handleSubmit(values) {
             this.toggleModal();
-            this.props.addComment(this.props.homeId, values.rating , values.author , values.comment);
+            this.props.postComment(this.props.homeId, values.rating  , values.comment);
     
         }
     
@@ -56,13 +56,6 @@ import { baseUrl } from '../shared/BaseUrl';
                                         </Control.select>
                                     </Col>
                                 </Row>
-                                <Row className="form-group">
-                                    <Label htmlFor="author"  md={12}>Your Name</Label>
-                                    <Col  md={12}>
-                                        <Control.text model=".author" id="author" name="author" placeholder="Author" className="form-control" validators={{ required, minLength: minLength(3), maxLength: maxLength(15) }} />
-                                        <Errors className="text-danger" model=".author" show="touched" messages={{ required: 'Required', minLength: 'Must be greater than 3 characters', maxLength: 'Must be 15 charaters or less' }} />
-                                    </Col>
-                                </Row>
     
                                 <Row className="form-group">
                                     <Label htmlFor="feedback"  md={12}>Your feedback</Label>
@@ -82,7 +75,7 @@ import { baseUrl } from '../shared/BaseUrl';
         }
     }
 
-    function RenderComments({comments , addComment,homeId}) {
+    function RenderComments({comments , postComment,homeId}) {
         if(comments == null) {
             return(
                 <div>
@@ -96,7 +89,7 @@ import { baseUrl } from '../shared/BaseUrl';
                 return(
                     <li key={comment.id}>
                         <p>{comment.comment}</p>
-                        <p>-- {comment.author}</p>
+                        <p>-- {comment.author.firstname} {comment.author.lastname}</p>
                     </li>
                     
                 )
@@ -105,7 +98,7 @@ import { baseUrl } from '../shared/BaseUrl';
                 <div className="col-12 col-md-5 m-1">
                     <h4> Comments </h4>
                     <ul className="list-unstyled">{comment}</ul>
-                    <CommentForm homeId={homeId} addComment={addComment}/>  
+                    <CommentForm homeId={homeId} postComment={postComment}/>  
                         
                 </div>
             )
@@ -170,8 +163,8 @@ import { baseUrl } from '../shared/BaseUrl';
                 <div className="row">
                     <RenderHome home={props.home} />
                     <RenderComments comments={props.comments} 
-                    addComment={props.addComment}
-                    homeId={props.home.id}/>
+                    postComment={props.postComment}
+                    homeId={props.home._id}/>
                 </div>
             </div>
         )
