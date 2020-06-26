@@ -197,3 +197,39 @@ export const logoutUser = () => (dispatch) => {
     localStorage.removeItem('creds');
     dispatch(receiveLogout())
 }
+
+export const SignupUser = (firstname , lastname , username , password) => (dispatch) => {
+
+    const newUser = {
+        firstname:firstname,
+        lastname:lastname,
+        username:username,
+        password:password
+    }
+    console.log('User ', newUser);
+
+    return fetch(baseUrl + 'user/signup' , {
+        method: 'POST',
+        body:JSON.stringify(newUser),
+        headers:{
+            'Content-Type':'application/json',
+        },
+        credentials:'same-origin'
+    })
+    .then(response => {
+        if(response.ok) {
+            return response;
+        }
+        else
+        {
+            var error = new Error('Error ' + response.status  + ': ' + response.statusText)
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess =  new Error(error.message);
+        throw errmess;
+    })
+    .then(response => console.log(response))
+}

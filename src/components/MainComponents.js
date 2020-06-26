@@ -8,7 +8,7 @@ import Home from './HomeComponents';
 import Contact from './contactComponent';
 import { Switch , Route , Redirect , withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment ,  fetchHomes , fetchComments , loginUser , logoutUser } from '../redux/ActionCreators';
+import { postComment ,  fetchHomes , fetchComments , loginUser , logoutUser , SignupUser } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -24,6 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchComments:() => {dispatch(fetchComments())},
   loginUser: (creds) => dispatch(loginUser(creds)),
   logoutUser: () => dispatch(logoutUser()),
+  SignupUser:(firstname,lastname,username,password) =>dispatch(SignupUser(firstname ,lastname , username , password))
 });
 
 class Main extends Component {
@@ -63,7 +64,8 @@ class Main extends Component {
       <div className="App">
       <Header auth={this.props.auth} 
           loginUser={this.props.loginUser} 
-          logoutUser={this.props.logoutUser} 
+          logoutUser={this.props.logoutUser}
+          SignupUser={this.props.SignupUser} 
           />   
         <Switch>
           <Route path="/home" component={HomePage} />
