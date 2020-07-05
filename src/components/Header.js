@@ -63,30 +63,30 @@ class Header extends Component {
     render() {
         return(
             <>
-            <Navbar dark expand="md">
+            <Navbar light expand="md">
                 <div className="container">
                     <NavbarToggler onClick={this.toggleNav} />
-                    <NavbarBrand className="mr-auto" href="/">Real E State</NavbarBrand>
+                    <NavbarBrand className="mr-auto" href="/"><span className="nav-links">Real E State</span></NavbarBrand>
                     <Collapse  isOpen={this.state.isNavOpen} navbar>
                     <Nav navbar>
                         <NavItem>
                             <NavLink className="nav-link" to="/home">
-                                <span className="fa fa-home fa-lg"></span>Home
+                                <span className="nav-links">Home</span>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="nav-link" to="/aboutus">
-                                <span className="fa fa-info fa-lg"></span>About Us
+                            <span className="nav-links">About Us</span>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="nav-link" to="/properties">
-                                <span className="fa fa-list fa-lg"></span> Buy
+                            <span className="nav-links">Properties</span>
                             </NavLink>
                         </NavItem>
                         <NavItem>
                             <NavLink className="nav-link" to="/contactus">
-                                <span className="fa fa-address-card fa-lg"></span>Contact Us
+                            <span className="nav-links">Contact Us</span>
                             </NavLink>
                         </NavItem>
                     </Nav>
@@ -111,7 +111,7 @@ class Header extends Component {
                                     </div>
                                         :
                                         <div>
-                                        <div className="navbar-text mr-3">{this.props.auth.user.username}</div>
+                                        <div className="navbar-text mr-3"><span className="nav-links">{this.props.auth.user.username}</span></div>
                                         <Button outline onClick={this.handleLogout}>
                                             <span className="fa fa-sign-out fa-lg"></span> Logout
                                             {this.props.auth.isFetching ?
@@ -127,16 +127,7 @@ class Header extends Component {
                     </Collapse>
                 </div>
             </Navbar>
-            <Jumbotron>
-                <div className="container">
-                    <div className="row row-header">
-                        <div className="col-12 col-sm-6">
-                            <h1>Real E State</h1>
-                            <p>We work for you to bring your dream house to you</p>
-                        </div>
-                    </div>
-                </div>
-            </Jumbotron>
+            
             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>

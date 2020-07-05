@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchComments:() => {dispatch(fetchComments())},
   loginUser: (creds) => dispatch(loginUser(creds)),
   logoutUser: () => dispatch(logoutUser()),
-  SignupUser:(firstname,lastname,username,password) =>dispatch(SignupUser(firstname ,lastname , username , password))
+  SignupUser:( firstname, lastname, username, password) =>dispatch(SignupUser(firstname ,lastname , username , password))
 });
 
 class Main extends Component {

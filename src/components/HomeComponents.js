@@ -32,13 +32,31 @@ function RenderCard({item ,isLoading , errMess}) {
 
 function Home(props) {
     return(
+        <div>
+        <div className="defaultHero">
+            <div className="banner">
+                <h1>WELCOME</h1>
+                <div></div>
+                <p>Buy Best Houses</p>
+            </div>
+        </div>
+        <div className="services">
+            <div className="section-title">
+            <h4>Services</h4>
+            <div></div>
+            </div>
+            </div>
         <div className="container">
             <div className="row align-items-start">
                 <div className="col-12 col-md m-1">
+                    <div className="featured-rooms">
                     <RenderCard item={props.home} isLoading={props.homesLoading} errMess={props.homesErrMess}/>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
+            
+            </div>
     )
 }
 

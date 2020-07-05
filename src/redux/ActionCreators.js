@@ -231,5 +231,5 @@ export const SignupUser = (firstname , lastname , username , password) => (dispa
         var errmess =  new Error(error.message);
         throw errmess;
     })
-    .then(response => console.log(response))
+    .then(response => response.json())
 }

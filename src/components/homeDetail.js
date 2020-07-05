@@ -89,7 +89,7 @@ import { baseUrl } from '../shared/BaseUrl';
                 return(
                     <li key={comment.id}>
                         <p>{comment.comment}</p>
-                        <p>-- {comment.author.firstname} {comment.author.lastname}</p>
+                        <p>--By {comment.author.firstname} {comment.author.lastname}</p>
                     </li>
                     
                 )
