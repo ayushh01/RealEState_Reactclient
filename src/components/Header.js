@@ -75,11 +75,6 @@ class Header extends Component {
                             </NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink className="nav-link" to="/aboutus">
-                            <span className="nav-links">About Us</span>
-                            </NavLink>
-                        </NavItem>
-                        <NavItem>
                             <NavLink className="nav-link" to="/properties">
                             <span className="nav-links">Properties</span>
                             </NavLink>
