@@ -3,6 +3,7 @@ import { Card, CardImg,CardText,CardBody,CardTitle,CardSubtitle } from 'reactstr
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseUrl';
+import { BsFillBarChartFill , BsFillBagFill , BsFillBrightnessHighFill ,BsFillPeopleFill} from "react-icons/bs";
 function RenderCard({item ,isLoading , errMess}) {
     if(isLoading) {
         return(
@@ -45,6 +46,33 @@ function Home(props) {
             <h4>Services</h4>
             <div></div>
             </div>
+            <div className="services-center">
+                <article className="service">
+                    <span><BsFillBarChartFill /></span>
+                    <h6>Full Network Areas</h6>
+                    <p>You will get good coverage for every Mobile Network Connection</p>
+                </article>
+            
+                <article className="service">
+                    <span><BsFillBagFill /></span>
+                    <h6>Near by All Essentials</h6>
+                    <p>All marts and metro and other essential stores are nearby.</p>
+                </article>
+            
+                <article className="service">
+                    <span><BsFillBrightnessHighFill /></span>
+                    <h6>Excellent Sunlight</h6>
+                    <p>All baclonies are sunlight facing or good sunlight exposure</p>
+                </article>
+                <article className="service">
+                    <span><BsFillPeopleFill /></span>
+                    <h6>Friendly Neighbours</h6>
+                    <p>Surrounded by Positive and Friendly Neighbours</p>
+                </article>
+            </div>
+                
+            
+            
             </div>
         <div className="container">
             <div className="row align-items-start">
