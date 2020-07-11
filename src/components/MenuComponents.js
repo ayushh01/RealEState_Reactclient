@@ -48,10 +48,18 @@ import { baseUrl } from '../shared/BaseUrl';
         }
         else {
             return(
+                <div>
+                <div className="roomsHero">
+                    <div className="banner">
+                        <h1>Properties</h1>
+                        <div></div>
+                    </div>
+                </div>
                 <div className="container">
                     <div className="row">
                         {menu}
                     </div>
+                </div>
                 </div>
             );
         }

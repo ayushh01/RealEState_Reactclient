@@ -96,8 +96,9 @@ class Header extends Component {
                                                 : null
                                             }
                                         </Button>
+                                        
                                         <Button outline onClick={this.toggleModall}>
-                                        <span className="fa fa-sign-up fa-lg"></span> Signup
+                                        <span className="fa fa-address-card-o"></span> Signup
                                         {this.props.auth.isFetching ?
                                             <span className="fa fa-spinner fa-pulse fa-fw"></span>
                                             : null
