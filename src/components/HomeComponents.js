@@ -18,15 +18,19 @@ function RenderCard({item ,isLoading , errMess}) {
     else 
     {
         return(
-            <Link to={`/properties/${item._id}`} >
-            <Card>
-                <CardImg src={baseUrl + item.image} alt={item.house_title} />
-                <CardBody>
-                    <CardTitle>{item.house_title}</CardTitle>
-                    <CardSubtitle>{item.price}</CardSubtitle>
-                </CardBody>
-            </Card>
-            </Link>
+            <article className="room">
+                    <div className="img-container">
+                        <img src={baseUrl + item.image} alt={item.house_title} />
+                        <div className="price-top">
+                            <h6>${item.Price}</h6>
+                            <p>lakhs</p>
+                        </div>
+                        <Link to={`/properties/${item._id}`}  className="btn-primary room-link">
+                            Features
+                        </Link>
+                    </div>
+                    <p className="room-info">{item.house_title}</p>
+            </article>
         )
     }
 }
@@ -76,7 +80,7 @@ function Home(props) {
             </div>
         <div className="container">
             <div className="row align-items-start">
-                <div className="col-12 col-md m-1">
+                <div className="col-12 col-md-5 m-1">
                     <div className="featured-rooms">
                     <RenderCard item={props.home} isLoading={props.homesLoading} errMess={props.homesErrMess}/>
                     </div>

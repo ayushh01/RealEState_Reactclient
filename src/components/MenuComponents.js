@@ -6,17 +6,19 @@ import { baseUrl } from '../shared/BaseUrl';
 
     function RenderHomeItem({home ,onClick}) {
         return(
-        <Card>
-            <Link to={`/properties/${home._id}`} >
-                <CardImg width="100%" height="400px" src={baseUrl + home.image} alt={home.house_title} />
-                <CardImgOverlay>
-                    <CardTitle>{home.house_title}</CardTitle>
-                    <p>{home.house_location}</p>
-                    <p>Price : - {home.Price}</p>
-                    <p>Area in sqft : - {home.Area}</p>
-                </CardImgOverlay>
+        <article className="room">
+            <div className="img-container">
+                <img src={baseUrl + home.image} alt={home.house_title} />
+                <div className="price-top">
+                    <h6>${home.Price}</h6>
+                    <p>lakhs</p>
+                </div>
+                <Link to={`/properties/${home._id}`}  className="btn-primary room-link">
+                    Features
                 </Link>
-        </Card>
+            </div>
+            <p className="room-info">{home.house_title}</p>
+        </article>
     )
     }
 
@@ -55,6 +57,7 @@ import { baseUrl } from '../shared/BaseUrl';
                         <div></div>
                     </div>
                 </div>
+                <hr />
                 <div className="container">
                     <div className="row">
                         {menu}
