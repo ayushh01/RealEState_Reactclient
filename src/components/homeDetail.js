@@ -88,15 +88,18 @@ import { baseUrl } from '../shared/BaseUrl';
             const comment = comments.map(comment =>{
                 return(
                     <li key={comment.id}>
+                        <p>{comment.rating} stars</p>
                         <p>{comment.comment}</p>
                         <p>--By {comment.author.firstname} {comment.author.lastname}</p>
+                        <hr />
                     </li>
                     
                 )
             })
             return(
                 <div className="col-12 col-md-5 m-1">
-                    <h4> Comments </h4>
+                    <h3> Comments </h3>
+                    <hr />
                     <ul className="list-unstyled">{comment}</ul>
                     <CommentForm homeId={homeId} postComment={postComment}/>  
                         
@@ -116,6 +119,7 @@ import { baseUrl } from '../shared/BaseUrl';
                 <br />
                 <div className="title">
                     <h2>{home.house_title}</h2>
+                    <p>{home.house_location}</p>
                 </div>
                 <div className="single-room-info">
                     <article className="desc">
@@ -128,6 +132,13 @@ import { baseUrl } from '../shared/BaseUrl';
                         <h6>Area : {home.Area} sqft</h6>
                         <h6>Spacing : {home.Spacing}</h6>
                     </article>
+                </div>
+                <div className="room-extras">
+                    <h6>More info</h6>
+                    <div className="extras">
+                        <li>Bedrooms -- {home.Bedrooms}</li>
+                        <li>Balconies -- {home.Balconies}</li>
+                    </div>
                 </div>
                 </>
             )
