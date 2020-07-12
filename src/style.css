@@ -497,3 +497,8 @@ h6 {
   }
 }
 /* end of rooms fitler*/
+.title h2{
+  margin-top: 30px;
+  align-items: center;
+  text-align: center;
+}

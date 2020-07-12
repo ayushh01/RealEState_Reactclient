@@ -109,17 +109,27 @@ import { baseUrl } from '../shared/BaseUrl';
         if(home!= null)
         {
             return(
-            <div className="col-12 col-md-5 m-1">
-            <Card>
-                <CardImg width="100%" height="400px" src={baseUrl + home.image} alt={home.house_title} />
-                <CardImgOverlay>
-                    <CardTitle>{home.house_title}</CardTitle>
-                    <p>{home.house_location}</p>
-                    <p>Price : - {home.Price}</p>
-                    <p>Area in sqft : - {home.Area}</p>
-                </CardImgOverlay>
-            </Card>
-            </div>
+                <>
+                <div className="pic" style={{width:'100%'}}>
+                    <img src={baseUrl + home.image} alt={home.house_title} style={{width:'100%'  , height:'500px'}}/>
+                </div>
+                <br />
+                <div className="title">
+                    <h2>{home.house_title}</h2>
+                </div>
+                <div className="single-room-info">
+                    <article className="desc">
+                        <h3>Details</h3>
+                        <p>{home.description}</p>
+                    </article>
+                    <article className="info">
+                        <h3>Info</h3>
+                        <h6>price : ${home.Price} lakhs</h6>
+                        <h6>Area : {home.Area} sqft</h6>
+                        <h6>Spacing : {home.Spacing}</h6>
+                    </article>
+                </div>
+                </>
             )
         }   
         else
