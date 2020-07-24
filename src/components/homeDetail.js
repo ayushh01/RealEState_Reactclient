@@ -4,6 +4,7 @@ import { postComment } from '../redux/ActionCreators';
 import { Control, LocalForm, Errors } from 'react-redux-form';  
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseUrl';
+import Weatherdetail from './forcastComponent';
 
     const required = (val) => val && val.length;
     const maxLength = (len) => (val) => !(val) || (val.length <= len);
@@ -116,11 +117,16 @@ import { baseUrl } from '../shared/BaseUrl';
                 <div className="pic" style={{width:'100%'}}>
                     <img src={baseUrl + home.image} alt={home.house_title} style={{width:'100%'  , height:'500px'}}/>
                 </div>
+                     
                 <br />
                 <div className="title">
                     <h2>{home.house_title}</h2>
                     <p>{home.house_location}</p>
                 </div>
+                
+                    
+                
+                <Weatherdetail home={home} />
                 <div className="single-room-info">
                     <article className="desc">
                         <h3>Details</h3>
@@ -150,6 +156,8 @@ import { baseUrl } from '../shared/BaseUrl';
             );
         }
     }
+
+
 
     const homedetail = (props) => {
         const home = props.home

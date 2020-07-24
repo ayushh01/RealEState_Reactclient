@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.location-style {
+  display: flex;
+ flex-direction: row;  
+ margin-top: 20px;
+ background-color: azure;    
+}
+
+.location-style h3, h4 {
+ color: #067ca0;   
+}
+
+.location-style h4 {    
+ margin-left: 5px;
+}
+
+.location-style ul {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ font-size: 12px;
+ list-style-type: none;
+}
+
+.location-style ul li {
+ border: 1px solid #006483;
+ padding: 5px;
+ margin: 10px;
+}
