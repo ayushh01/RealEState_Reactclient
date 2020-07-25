@@ -56,7 +56,7 @@ function RenderHotel({item ,isLoading , errMess}) {
                             <h6>${item.Price}</h6>
                             <p>per day</p>
                         </div>
-                        <Link to={`/properties/${item._id}`}  className="btn-primary room-link">
+                        <Link to={`/hotels/${item._id}`}  className="btn-primary room-link">
                             Features
                         </Link>
                     </div>
