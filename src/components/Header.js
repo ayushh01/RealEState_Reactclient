@@ -1,12 +1,10 @@
 import React , { Component } from 'react';
-import { Navbar, NavbarBrand ,Nav , NavbarToggler , Collapse , NavItem ,  Jumbotron , Button , Modal , Row, Col, ModalHeader ,ModalBody , Form , FormGroup , Input ,Label } from 'reactstrap';
+import { Navbar, NavbarBrand ,Nav , NavbarToggler , Collapse , NavItem , Button , Modal , Row, ModalHeader ,ModalBody , Form , FormGroup , Input ,Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';  
 
 
 const required = (val) => val && val.length;
-    const maxLength = (len) => (val) => !(val) || (val.length <= len);
-    const minLength = (len) => (val) => val && (val.length >= len);
 
 
 class Header extends Component {

@@ -77,7 +77,7 @@ class MainContent extends React.Component {
   }    
 
   render() {
-    const forcast = this.weforcast(this.props.home);
+    this.weforcast(this.props.home);
     const allComponents = this.renderForcast();
     return(      
       <div>

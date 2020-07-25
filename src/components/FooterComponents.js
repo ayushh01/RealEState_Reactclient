@@ -23,8 +23,6 @@ function Footer(props) {
 		              M.P , India<br />
 		              <i className="fa fa-phone fa-lg"></i>: +9952 1234 5678<br />
 		              <i className="fa fa-fax fa-lg"></i>: +9952 8765 4321<br />
-		              <i className="fa fa-envelope fa-lg"></i>: <a href="#">
-                         realestate.help@gmail.com</a>
                     </address>
                 </div>
                 <div className="col-12 col-sm-4 align-self-center">

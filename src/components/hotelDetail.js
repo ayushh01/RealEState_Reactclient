@@ -1,14 +1,11 @@
 import React , { Component} from 'react';
-import { Card, CardImg, CardImgOverlay, CardTitle, Button, Modal, ModalHeader, ModalBody,  Label, Row, Col } from 'reactstrap';
-import { postComment } from '../redux/ActionCreators';
+import {  Button, Modal, ModalHeader, ModalBody,  Label, Row, Col } from 'reactstrap';
 import { Control, LocalForm, Errors } from 'react-redux-form';  
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseUrl';
 import Weatherdetail from './forcastComponent';
 
     const required = (val) => val && val.length;
-    const maxLength = (len) => (val) => !(val) || (val.length <= len);
-    const minLength = (len) => (val) => val && (val.length >= len);
     
     
     //created Class component  Task-1
