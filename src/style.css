@@ -142,7 +142,8 @@ h6 {
 /* end of navbar */
 /* Hero */
 .defaultHero,
-.roomsHero {
+.roomsHero,
+.roomsHotel {
   min-height: calc(100vh - 66px);
   background: url("/assets/images/heroback.jpg") center/cover no-repeat;
   display: flex;
@@ -151,6 +152,11 @@ h6 {
 }
 .roomsHero {
   background-image: url("/assets/images/homedetail.jpg");
+  min-height: 60vh;
+}
+
+.roomsHotel {
+  background-image: url("/assets/images/hotelback.jpg");
   min-height: 60vh;
 }
 /* End of Hero */

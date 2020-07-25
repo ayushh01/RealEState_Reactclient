@@ -50,7 +50,7 @@ import { baseUrl } from '../shared/BaseUrl';
         else {
             return(
                 <div>
-                <div className="roomsHero">
+                <div className="roomsHotel">
                     <div className="banner">
                         <h1>Hotels</h1>
                         <div></div>
