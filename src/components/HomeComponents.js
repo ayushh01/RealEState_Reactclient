@@ -35,6 +35,37 @@ function RenderCard({item ,isLoading , errMess}) {
     }
 }
 
+function RenderHotel({item ,isLoading , errMess}) {
+    if(isLoading) {
+        return(
+            <Loading />
+        )
+    }
+    else if(errMess) {
+        return(
+            <h4>{errMess}</h4>
+        )
+    }
+    else 
+    {
+        return(
+            <article className="room">
+                    <div className="img-container">
+                        <img src={baseUrl + item.image} alt={item.hotel_title} />
+                        <div className="price-top">
+                            <h6>${item.Price}</h6>
+                            <p>per day</p>
+                        </div>
+                        <Link to={`/properties/${item._id}`}  className="btn-primary room-link">
+                            Features
+                        </Link>
+                    </div>
+                    <p className="room-info">{item.hotel_title}</p>
+            </article>
+        )
+    }
+}
+
 function Home(props) {
     return(
         <div>
@@ -83,6 +114,11 @@ function Home(props) {
                 <div className="col-12 col-md-5 m-1">
                     <div className="featured-rooms">
                     <RenderCard item={props.home} isLoading={props.homesLoading} errMess={props.homesErrMess}/>
+                    </div>
+                </div>
+                <div className="col-12 col-md-5 m-1">
+                    <div className="featured-rooms">
+                    <RenderHotel item={props.hotel} isLoading={props.hotelsLoading} errMess={props.hotelsErrMess}/>
                     </div>
                 </div>
             </div>

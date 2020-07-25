@@ -48,7 +48,10 @@ class MainContent extends React.Component {
 
   weforcast = (home) => {
     let locName = home.house_location;    
-    
+    if(locName == null)
+    {
+      locName = home.hotel_location;
+    }
     
     const url = `http://localhost:3002/forcast/${locName}/`;    
     fetch(url)

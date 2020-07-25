@@ -84,6 +84,45 @@ export const addHomes = (homes) => ({
     payload:homes
 });
 
+
+export const fetchHotels = () => (dispatch) => {
+    dispatch(hotelsLoading(true));
+
+    return fetch(baseUrl + 'hotel')
+        .then(response => {
+            if(response.ok) {
+                return response;
+            }
+            else
+            {
+                var error = new Error('Error ' + response.status  + ': ' + response.statusText)
+                error.response = response;
+                throw error;
+            }
+        },
+        error => {
+            var errmess =  new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then(hotels => dispatch(addHotels(hotels)))
+        .catch(error => dispatch(hotelsfailed(error.message)))
+}
+
+export const hotelsLoading = () =>({
+    type: ActionTypes.HOTELS_LOADING
+});
+
+export const hotelsfailed = (errmess) => ({
+    type: ActionTypes.HOTELS_FAILED,
+    payload:errmess
+});
+
+export const addHotels = (hotels) => ({
+    type:ActionTypes.ADD_HOTELS,
+    payload:hotels
+});
+
 export const fetchComments = () => (dispatch) => {
     return fetch(baseUrl + 'comments')
     .then(response => {
