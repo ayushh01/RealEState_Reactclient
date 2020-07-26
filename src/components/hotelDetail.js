@@ -4,6 +4,7 @@ import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseUrl';
 import Weatherdetail from './forcastComponent';
+import { MdNetworkWifi ,MdPets , MdPool, MdFreeBreakfast , MdLocalDrink , MdToys , MdFitnessCenter} from "react-icons/md";
 
     const required = (val) => val && val.length;
     
@@ -131,16 +132,21 @@ import Weatherdetail from './forcastComponent';
                     </article>
                     <article className="info">
                         <h3>Info</h3>
-                        <h6>price : ${home.Price} lakhs</h6>
-                        <h6>Area : {home.Area} sqft</h6>
-                        <h6>Spacing : {home.Spacing}</h6>
+                        <h6>price : ${home.Price} per day</h6>
+                        <h6>Available</h6>
                     </article>
                 </div>
                 <div className="room-extras">
-                    <h6>More info</h6>
+                    <h6>Amenities & facilities</h6>
                     <div className="extras">
-                        <li>Bedrooms -- {home.Bedrooms}</li>
-                        <li>Balconies -- {home.Balconies}</li>
+                        <li>{home.Breakfast ? <li>--Breakfast included  <MdFreeBreakfast /></li> : <li>--Breakfast not added</li> }</li>
+                        <li>{home.Wifi ? <li>--Free Wifi  <MdNetworkWifi /></li> : <li>--no Wifi</li> }</li>
+                        <li>{home.Pool ? <li>--Pool for all  <MdPool /></li> : null }</li>
+                        <li>{home.Spa ? <li>--Spa included  </li> : <li>--Spa opening soon!</li> }</li>
+                        <li>{home.Pets ? <li>--Pets are allowed  <MdPets /></li> : <li>--Pets are not allowed</li> }</li>
+                        <li>{home.AC ? <li>--AC  <MdToys /></li> : <li>--Fan</li> }</li>
+                        <li>{home.Hotel_bar ? <li>--Hotel_bar  <MdLocalDrink /></li> : null }</li>
+                        <li>{home.Gym ? <li>--Gym included  <MdFitnessCenter /></li> : <li>--No Gym</li> }</li>
                     </div>
                 </div>
                 </>

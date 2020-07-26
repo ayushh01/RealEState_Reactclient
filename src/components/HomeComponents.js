@@ -17,6 +17,8 @@ function RenderCard({item ,isLoading , errMess}) {
     else 
     {
         return(
+            <div>
+                <h1>Buy Houses</h1>
             <article className="room">
                     <div className="img-container">
                         <img src={baseUrl + item.image} alt={item.house_title} />
@@ -30,6 +32,11 @@ function RenderCard({item ,isLoading , errMess}) {
                     </div>
                     <p className="room-info">{item.house_title}</p>
             </article>
+            <br />
+            <Link to={'/properties'} >
+            <button className="btn-primary">View More Houses</button>
+            </Link>
+            </div>
         )
     }
 }
@@ -48,7 +55,10 @@ function RenderHotel({item ,isLoading , errMess}) {
     else 
     {
         return(
-            <article className="room">
+            <div>
+                <h1>Book Hotels</h1>
+                 
+                <article className="room">
                     <div className="img-container">
                         <img src={baseUrl + item.image} alt={item.hotel_title} />
                         <div className="price-top">
@@ -61,6 +71,11 @@ function RenderHotel({item ,isLoading , errMess}) {
                     </div>
                     <p className="room-info">{item.hotel_title}</p>
             </article>
+            <br />
+            <Link to={'/hotels'} >
+            <button className="btn-primary">View More Hotels</button>
+            </Link>
+            </div>
         )
     }
 }
