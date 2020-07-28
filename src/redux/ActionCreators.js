@@ -45,6 +45,42 @@ export const postComment = (homeId , rating , comment) => (dispatch) => {
     .catch(error => console.log(error))
 }
 
+export const postmail = (email) => (dispatch) => {
+
+    const newbook = {
+        email:email
+    }
+    console.log('Book ', newbook);
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'sendmail' , {
+        method: 'POST',
+        body:JSON.stringify(newbook),
+        headers:{
+            'Content-Type':'application/json',
+            'Authorization': bearer
+        },
+        credentials:'same-origin'
+    })
+    .then(response => {
+        if(response.ok) {
+            return response;
+        }
+        else
+        {
+            var error = new Error('Error ' + response.status  + ': ' + response.statusText)
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess =  new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .catch(error => console.log(error))
+}
+
 export const fetchHomes = () => (dispatch) => {
     dispatch(homesLoading(true));
 

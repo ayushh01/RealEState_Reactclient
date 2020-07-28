@@ -9,7 +9,7 @@ import Home from './HomeComponents';
 import Contact from './contactComponent';
 import { Switch , Route , Redirect , withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { postComment ,  fetchHomes ,fetchHotels , fetchComments , loginUser , logoutUser , SignupUser } from '../redux/ActionCreators';
+import { postComment ,  fetchHomes ,fetchHotels , fetchComments , loginUser , logoutUser , SignupUser , postmail } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -21,6 +21,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
+  postmail:(email) => dispatch(postmail(email)),
   postComment:(homeId , rating ,author, comment) => dispatch(postComment(homeId , rating ,author, comment)),
   fetchHomes:() => {dispatch(fetchHomes())},
   fetchHotels:() => {dispatch(fetchHotels())},
@@ -57,7 +58,7 @@ class Main extends Component {
             isLoading={this.props.homes.isLoading} errMess = { this.props.homes.errMess}
             comments={this.props.comments.comments.filter((comment) => comment.home === match.params.homeId)}
             commentsErrMess = { this.props.comments.errMess}
-            postComment={this.props.postComment} />
+            postComment={this.props.postComment} auth={this.props.auth} postmail={this.props.postmail}/>
       )
     }
 
@@ -68,7 +69,7 @@ class Main extends Component {
             isLoading={this.props.hotels.isLoading} errMess = { this.props.hotels.errMess}
             comments={this.props.comments.comments.filter((comment) => comment.home === match.params.hotelId)}
             commentsErrMess = { this.props.comments.errMess}
-            postComment={this.props.postComment} />
+            postComment={this.props.postComment} auth={this.props.auth} postmail={this.props.postmail}/>
       )
     }
 
