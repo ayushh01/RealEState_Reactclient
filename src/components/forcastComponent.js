@@ -53,7 +53,7 @@ class MainContent extends React.Component {
       locName = home.hotel_location;
     }
     
-    const url = `http://localhost:3002/forcast/${locName}/`;    
+    const url = `https://realstatee.herokuapp.com/forcast/${locName}/`;    
     fetch(url)
       .then(response => { return response.json(); })
         .then(data => { 
