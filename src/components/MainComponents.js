@@ -11,6 +11,7 @@ import { Switch , Route , Redirect , withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postComment ,  fetchHomes ,fetchHotels , fetchComments , loginUser , logoutUser , SignupUser , postmail } from '../redux/ActionCreators';
 
+
 const mapStateToProps = state => {
   return {
     homes:state.homes,

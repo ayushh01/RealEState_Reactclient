@@ -6,6 +6,7 @@ import { baseUrl } from '../shared/BaseUrl';
 import Weatherdetail from './forcastComponent';
 import { MdNetworkWifi ,MdPets , MdPool, MdFreeBreakfast , MdLocalDrink , MdToys , MdFitnessCenter} from "react-icons/md";
 
+
     const required = (val) => val && val.length;
     
     

@@ -2,9 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseUrl';
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
     function RenderHomeItem({home ,onClick}) {
         return(
+            <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
         <article className="room">
             <div className="img-container">
                 <img src={baseUrl + home.image} alt={home.house_title} />
@@ -18,6 +24,7 @@ import { baseUrl } from '../shared/BaseUrl';
             </div>
             <p className="room-info">{home.house_title}</p>
         </article>
+        </FadeTransform>
     )
     }
 

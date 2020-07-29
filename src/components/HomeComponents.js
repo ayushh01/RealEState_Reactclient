@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/BaseUrl';
+import { FadeTransform } from 'react-animation-components';
 import { BsFillBarChartFill , BsFillBagFill , BsFillBrightnessHighFill ,BsFillPeopleFill} from "react-icons/bs";
 function RenderCard({item ,isLoading , errMess}) {
     if(isLoading) {
@@ -19,6 +20,11 @@ function RenderCard({item ,isLoading , errMess}) {
         return(
             <div>
                 <h1>Buy Houses</h1>
+                <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>    
             <article className="room">
                     <div className="img-container">
                         <img src={baseUrl + item.image} alt={item.house_title} />
@@ -32,6 +38,7 @@ function RenderCard({item ,isLoading , errMess}) {
                     </div>
                     <p className="room-info">{item.house_title}</p>
             </article>
+            </FadeTransform>
             <br />
             <Link to={'/properties'} >
             <button className="btn-primary">View More Houses</button>
@@ -57,7 +64,11 @@ function RenderHotel({item ,isLoading , errMess}) {
         return(
             <div>
                 <h1>Book Hotels</h1>
-                 
+                <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>    
                 <article className="room">
                     <div className="img-container">
                         <img src={baseUrl + item.image} alt={item.hotel_title} />
@@ -71,6 +82,7 @@ function RenderHotel({item ,isLoading , errMess}) {
                     </div>
                     <p className="room-info">{item.hotel_title}</p>
             </article>
+            </FadeTransform>
             <br />
             <Link to={'/hotels'} >
             <button className="btn-primary">View More Hotels</button>
