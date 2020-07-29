@@ -30,7 +30,7 @@ class Forcast extends React.Component {
         let forcastDays = this.props.forcastDays;
         return (
           <div>
-          <h3>Weather Conditions there:-</h3>
+          <h3>Plan your visit Smartly Weather Conditions of {this.props.city} for next 7 days:-</h3>
           <div className="location-style">
             <h4>{this.props.city} <br />
               <span>Time: {this.props.time}</span>

@@ -1,6 +1,6 @@
 import React from 'react';
 import Forcast from './Forcast.js';
- 
+import { Loading } from './LoadingComponent'; 
 
 class MainContent extends React.Component {
   constructor(props) {
@@ -82,7 +82,11 @@ class MainContent extends React.Component {
     return(      
       <div>
         <div className="all-forcasts">          
-          { (this.state.allForcasts === undefined || this.state.allForcasts.length < 1) && (<h3>No forcasts to show</h3>)}
+          { (this.state.allForcasts === undefined || this.state.allForcasts.length < 1) && (<div className="conatiner">
+                    <div className="row">
+                        <Loading />
+                    </div>
+                </div>)}
           {(this.state.allForcasts && this.state.allForcasts.length >= 1) && (allComponents.map(item => {return item;} ))}          
         </div>                     
       </div>

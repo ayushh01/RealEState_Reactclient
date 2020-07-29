@@ -108,12 +108,30 @@ import Weatherdetail from './forcastComponent';
                             <LocalForm onSubmit={(values) => this.handleSubmitt(values)}>
     
                                 <Row className="form-group">
+                                    <Label htmlFor="fname"  md={12}>Firstname</Label>
+                                    <Col  md={12}>
+                                        <Control.text model=".fname" id="fname" name="fname" resize="none" rows="6" className="form-control" validators={{ required }} />
+                                        <Errors className="text-danger" model=".fname" show="touched" messages={{ required: 'Required' }} />
+                                    </Col>
+                                </Row>
+                                <Row className="form-group">
+                                    <Label htmlFor="lname"  md={12}>Lastname</Label>
+                                    <Col  md={12}>
+                                        <Control.text model=".lname" id="lname" name="lname" resize="none" rows="6" className="form-control" validators={{ required }} />
+                                        <Errors className="text-danger" model=".lname" show="touched" messages={{ required: 'Required' }} />
+                                    </Col>
+                                </Row>
+
+                                <Row className="form-group">
                                     <Label htmlFor="email"  md={12}>Your Email</Label>
                                     <Col  md={12}>
                                         <Control.text model=".email" id="email" name="email" resize="none" rows="6" className="form-control" validators={{ required }} />
                                         <Errors className="text-danger" model=".email" show="touched" messages={{ required: 'Required' }} />
                                     </Col>
                                 </Row>
+                                
+                                <p>Please provide your valid email , we will contact to you or resolve your all queries about this property.<br />After Book check your email.</p>
+
     
                                 <Button type="submit" value="submit" color="primary">Book</Button>
                             </LocalForm>
